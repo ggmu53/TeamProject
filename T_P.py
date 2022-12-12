@@ -7,14 +7,14 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 img = cv2.imread('./image/son.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-faces = face_cascade.detectMultiScale(gray,1.1,4)
+faces = face_cascade.detectMultiScale(gray,1.1,15)
 
 for(x, y, w, h) in faces:
     cv2.rectangle(img, (x, y),(x + w,y + h), (255, 0, 0), 2)
     face_gray = gray[y:y+h, x:x+w]
     face_color = img[y:y+h, x:x+w]
-    eyes = eye_cascade.detectMultiScale(face_gray, 1.01, 2)
-    smile = smile_cascade.detectMultiScale(face_gray, 1.2,4, minSize = (50,20))
+    eyes = eye_cascade.detectMultiScale(face_gray, 1.01, 50)
+    smile = smile_cascade.detectMultiScale(face_gray, 1.2,50, minSize = (50,20))
 
     
 
